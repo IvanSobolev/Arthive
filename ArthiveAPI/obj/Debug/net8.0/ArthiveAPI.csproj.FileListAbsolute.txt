@@ -74,3 +74,4 @@ D:\.prog\Arthive\ArthiveAPI\obj\Debug\net8.0\refint\ArthiveAPI.dll
 D:\.prog\Arthive\ArthiveAPI\obj\Debug\net8.0\ArthiveAPI.pdb
 D:\.prog\Arthive\ArthiveAPI\obj\Debug\net8.0\ArthiveAPI.genruntimeconfig.cache
 D:\.prog\Arthive\ArthiveAPI\obj\Debug\net8.0\ref\ArthiveAPI.dll
+D:\.prog\Arthive\ArthiveAPI\obj\Debug\net8.0\ArthiveAPI.sourcelink.json

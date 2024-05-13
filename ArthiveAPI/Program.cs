@@ -9,8 +9,18 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(opt => 
-    opt.UseSqlite(builder.Configuration.GetConnectionString("Db")));
+// builder.Services.AddDbContext<DataContext>(opt => 
+//     opt.UseSqlite(builder.Configuration.GetConnectionString("Db")));
+
+builder.Services.AddSingleton<DataContext>(provider =>
+{
+    var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+    optionsBuilder.UseSqlite("Data Source=DataContext.db"); 
+    var accountContext = new DataContext(optionsBuilder.Options);
+    accountContext.Database.EnsureCreated();  
+
+    return accountContext;
+});
 builder.Services.AddCors(c => c.AddPolicy("cors", opt =>
 {
     opt.AllowAnyHeader();
@@ -48,7 +58,7 @@ builder.Services.AddIdentity<User, IdentityRole<long>>()
 
 builder.Services.AddSwaggerGen(option =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Pathnostics", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Arthive", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,

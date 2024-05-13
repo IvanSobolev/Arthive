@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 
 [ApiController]
 [Route("accounts")]
@@ -69,7 +70,7 @@ public class AccountsController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<AuthResponse>> Register([FromBody] RegisterRequest request)
     {
-        if (!ModelState.IsValid) return BadRequest(request);
+        if (!ModelState.IsValid) return BadRequest("1");
         
         var user = new User
         {
@@ -83,7 +84,7 @@ public class AccountsController : ControllerBase
             ModelState.AddModelError(string.Empty, error.Description);
         }
 
-        if (!result.Succeeded) return BadRequest(request);
+        if (!result.Succeeded) return BadRequest(ModelState);
         
         var findUser = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
 
