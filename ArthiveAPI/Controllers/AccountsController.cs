@@ -166,4 +166,22 @@ public class AccountsController : ControllerBase
 
         return Ok();
     }
+
+
+    //для примера работы Authorize
+    // в сваггере можно посмотреть, что метод test-auth доступен только авторизованным пользователям
+    // авторизация происходит через bearer token через замочек в верхнем правом угоу
+    // в реальной жизни токен гуляет на фронте как поулчит его через логин
+    [Authorize]
+    [HttpGet("test-auth")]
+    public IActionResult Test()
+    {
+        return Ok("Test authorized");
+    }
+
+    [HttpGet("test")]
+    public IActionResult Test2()
+    {
+        return Ok("Test not authorized");
+    }
 }
