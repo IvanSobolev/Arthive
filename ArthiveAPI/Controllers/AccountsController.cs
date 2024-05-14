@@ -120,7 +120,7 @@ public class AccountsController : ControllerBase
         var username = principal.Identity!.Name;
         var user = await _userManager.FindByNameAsync(username!);
 
-        if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+        if (user == null || user.RefreshToken != refreshToken)// || user.RefreshTokenExpiryTime <= DateTime.UtcNow) // вот что вам мешало
         {
             return BadRequest("Invalid access token or refresh token");
         }
