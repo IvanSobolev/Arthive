@@ -9,6 +9,8 @@ public class DataContext : IdentityDbContext<User, IdentityRole<long>, long>
     {}
 
     public DbSet<User> Users { get; set; }
+    // public DbSet<Post> Posts { get; set; }
+    // public DbSet<Content> Contents { get; set; }
     public DbSet<IdentityUserLogin<long>> identityUserLogins { get; set; }
     public DbSet<IdentityUserRole<long>> identityUserRoles { get; set; }
     public DbSet<IdentityUserToken<long>> identityUserTokens { get; set; }
