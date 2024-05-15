@@ -1,7 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 
@@ -120,7 +122,7 @@ public class AccountsController : ControllerBase
         var username = principal.Identity!.Name;
         var user = await _userManager.FindByNameAsync(username!);
 
-        if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+        if (user == null || user.RefreshToken != refreshToken)// || user.RefreshTokenExpiryTime <= DateTime.UtcNow) // вот что вам мешало
         {
             return BadRequest("Invalid access token or refresh token");
         }
@@ -137,7 +139,7 @@ public class AccountsController : ControllerBase
             refreshToken = newRefreshToken
         });
     }
-    
+
     [Authorize]
     [HttpPost]
     [Route("revoke/{username}")]
@@ -165,5 +167,24 @@ public class AccountsController : ControllerBase
         }
 
         return Ok();
+    }
+
+
+    //для примера работы Authorize
+    // в сваггере можно посмотреть, что метод test-auth доступен только авторизованным пользователям
+    // авторизация происходит через bearer token через замочек в верхнем правом угоу
+    // в реальной жизни токен гуляет на фронте как поулчит его через логин
+    [Authorize]
+    [HttpGet("test-auth")]
+    public IActionResult Test()
+    {
+        var userName = HttpContext.User.Identity.Name;
+        return Ok(userName);
+    }
+
+    [HttpGet("test")]
+    public IActionResult Test2()
+    {
+        return Ok("Test not authorized");
     }
 }

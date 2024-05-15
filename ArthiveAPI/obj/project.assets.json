@@ -2125,11 +2125,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.prog\\Arthive\\ArthiveAPI\\ArthiveAPI.csproj",
+      "projectUniqueName": "D:\\.prog\\Arthive-mainTEST\\ArthiveAPI\\ArthiveAPI.csproj",
       "projectName": "ArthiveAPI",
-      "projectPath": "D:\\.prog\\Arthive\\ArthiveAPI\\ArthiveAPI.csproj",
+      "projectPath": "D:\\.prog\\Arthive-mainTEST\\ArthiveAPI\\ArthiveAPI.csproj",
       "packagesPath": "C:\\Users\\bezli\\.nuget\\packages\\",
-      "outputPath": "D:\\.prog\\Arthive\\ArthiveAPI\\obj\\",
+      "outputPath": "D:\\.prog\\Arthive-mainTEST\\ArthiveAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bezli\\AppData\\Roaming\\NuGet\\NuGet.Config",
