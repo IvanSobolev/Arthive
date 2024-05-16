@@ -1,9 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 
@@ -77,9 +75,7 @@ public class AccountsController : ControllerBase
         var user = new User
         {
             Email = request.Email, 
-            UserName = request.Name,
-            pictureUrl = "https://pbs.twimg.com/media/C8TVG88XoAA2p61.jpg",
-            Description = ""
+            UserName = request.Email
         };
         var result = await _userManager.CreateAsync(user, request.Password);
 
@@ -99,7 +95,7 @@ public class AccountsController : ControllerBase
         return await Authenticate(new AuthRequest
         {
             Email = request.Email,
-            Password = request.Password,
+            Password = request.Password
         });
     }
     
@@ -141,7 +137,7 @@ public class AccountsController : ControllerBase
             refreshToken = newRefreshToken
         });
     }
-
+    
     [Authorize]
     [HttpPost]
     [Route("revoke/{username}")]
@@ -180,8 +176,7 @@ public class AccountsController : ControllerBase
     [HttpGet("test-auth")]
     public IActionResult Test()
     {
-        var userName = HttpContext.User.Identity.Name;
-        return Ok(userName);
+        return Ok("Test authorized");
     }
 
     [HttpGet("test")]

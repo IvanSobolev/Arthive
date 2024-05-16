@@ -12,28 +12,21 @@ builder.Services.AddControllers();
 // builder.Services.AddDbContext<DataContext>(opt => 
 //     opt.UseSqlite(builder.Configuration.GetConnectionString("Db")));
 
-var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-optionsBuilder.UseSqlite("Data Source=DataContext.db"); 
-var dataContext = new DataContext(optionsBuilder.Options);
-dataContext.Database.EnsureCreated();  
-
-builder.Services.AddSingleton<DataContext>(prrovider =>
+builder.Services.AddSingleton<DataContext>(provider =>
 {
-    return dataContext;
-});
-builder.Services.AddSingleton<IPostManager>(provider =>
-{
-    IPostManager postManager = new PostManager(dataContext);
+    var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+    optionsBuilder.UseSqlite("Data Source=DataContext.db"); 
+    var accountContext = new DataContext(optionsBuilder.Options);
+    accountContext.Database.EnsureCreated();  
 
-    return postManager;
+    return accountContext;
 });
-// builder.Services.AddCors(c => c.AddPolicy("cors", opt =>
-// {
-//     opt.AllowAnyHeader();
-//     opt.AllowCredentials();
-//     opt.AllowAnyMethod();
-//     opt.WithOrigins(builder.Configuration.GetSection("Cors:Urls").Get<string[]>()!);
-// }));
+builder.Services.AddCors(c => c.AddPolicy("AllowAll", opt =>
+{
+    opt.AllowAnyOrigin() ;
+    opt.AllowAnyMethod();
+    opt.AllowAnyHeader(); 
+}));
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddAuthentication(opt => {
         opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -96,11 +89,12 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-//app.UseCors("cors");
+app.UseCors("cors");
 app.MapControllers();
 
 app.Run();
