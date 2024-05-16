@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ArthiveAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+934b6d101ea11cfb8a38c636914f60044df565fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4b202557379e9aab121cc2593b9b38cde7c93ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("ArthiveAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ArthiveAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

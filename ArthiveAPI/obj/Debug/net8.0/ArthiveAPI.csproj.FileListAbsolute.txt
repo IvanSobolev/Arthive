@@ -151,3 +151,8 @@ D:\.prog\Arthive-mainTEST\ArthiveAPI\obj\Debug\net8.0\refint\ArthiveAPI.dll
 D:\.prog\Arthive-mainTEST\ArthiveAPI\obj\Debug\net8.0\ArthiveAPI.pdb
 D:\.prog\Arthive-mainTEST\ArthiveAPI\obj\Debug\net8.0\ArthiveAPI.genruntimeconfig.cache
 D:\.prog\Arthive-mainTEST\ArthiveAPI\obj\Debug\net8.0\ref\ArthiveAPI.dll
+D:\.prog\Arthive\ArthiveAPI\bin\Debug\net8.0\publish\web.config
+D:\.prog\Arthive\ArthiveAPI\bin\Debug\net8.0\publish\appsettings.Development.json
+D:\.prog\Arthive\ArthiveAPI\bin\Debug\net8.0\publish\appsettings.json
+D:\.prog\Arthive\ArthiveAPI\bin\Debug\net8.0\publish\ArthiveAPI.deps.json
+D:\.prog\Arthive\ArthiveAPI\bin\Debug\net8.0\publish\ArthiveAPI.runtimeconfig.json

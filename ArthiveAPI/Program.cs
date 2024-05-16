@@ -17,7 +17,7 @@ optionsBuilder.UseSqlite("Data Source=DataContext.db");
 var dataContext = new DataContext(optionsBuilder.Options);
 dataContext.Database.EnsureCreated();  
 
-builder.Services.AddSingleton<DataContext>(provider =>
+builder.Services.AddSingleton<DataContext>(prrovider =>
 {
     return dataContext;
 });
@@ -27,13 +27,13 @@ builder.Services.AddSingleton<IPostManager>(provider =>
 
     return postManager;
 });
-builder.Services.AddCors(c => c.AddPolicy("cors", opt =>
-{
-    opt.AllowAnyHeader();
-    opt.AllowCredentials();
-    opt.AllowAnyMethod();
-    opt.WithOrigins(builder.Configuration.GetSection("Cors:Urls").Get<string[]>()!);
-}));
+// builder.Services.AddCors(c => c.AddPolicy("cors", opt =>
+// {
+//     opt.AllowAnyHeader();
+//     opt.AllowCredentials();
+//     opt.AllowAnyMethod();
+//     opt.WithOrigins(builder.Configuration.GetSection("Cors:Urls").Get<string[]>()!);
+// }));
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddAuthentication(opt => {
         opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -100,7 +100,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors("cors");
+//app.UseCors("cors");
 app.MapControllers();
 
 app.Run();
