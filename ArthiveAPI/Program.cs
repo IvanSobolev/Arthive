@@ -21,12 +21,11 @@ builder.Services.AddSingleton<DataContext>(provider =>
 
     return accountContext;
 });
-builder.Services.AddCors(c => c.AddPolicy("cors", opt =>
+builder.Services.AddCors(c => c.AddPolicy("AllowAll", opt =>
 {
-    opt.AllowAnyHeader();
-    opt.AllowCredentials();
+    opt.AllowAnyOrigin() ;
     opt.AllowAnyMethod();
-    opt.WithOrigins(builder.Configuration.GetSection("Cors:Urls").Get<string[]>()!);
+    opt.AllowAnyHeader(); 
 }));
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddAuthentication(opt => {
