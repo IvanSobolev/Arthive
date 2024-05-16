@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tbCmzuEvz9Pw6SCX1kOHDVvWFn0+9sdM8LenBhRA0yL+1FtTFRSgEtgbxPSO33LZAfPj69AWxFa6VT7MEkcLJg==",
+  "dgSpecHash": "DTVN9rz8XqmhWoOEw+2ly9m6cNVcn5g7PLErbMGIAKAFpj82C7Jky1RcEmldY6GBPauFDF1pfTLErKddztjD5g==",
   "success": true,
-  "projectFilePath": "D:\\.prog\\Arthive-mainTEST\\ArthiveAPI\\ArthiveAPI.csproj",
+  "projectFilePath": "D:\\.prog\\Arthive\\ArthiveAPI\\ArthiveAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bezli\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.4\\microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512",
     "C:\\Users\\bezli\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.4\\microsoft.aspnetcore.cryptography.internal.8.0.4.nupkg.sha512",

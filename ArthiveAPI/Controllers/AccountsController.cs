@@ -77,7 +77,9 @@ public class AccountsController : ControllerBase
         var user = new User
         {
             Email = request.Email, 
-            UserName = request.Email
+            UserName = request.Name,
+            pictureUrl = "https://pbs.twimg.com/media/C8TVG88XoAA2p61.jpg",
+            Description = ""
         };
         var result = await _userManager.CreateAsync(user, request.Password);
 
@@ -97,7 +99,7 @@ public class AccountsController : ControllerBase
         return await Authenticate(new AuthRequest
         {
             Email = request.Email,
-            Password = request.Password
+            Password = request.Password,
         });
     }
     

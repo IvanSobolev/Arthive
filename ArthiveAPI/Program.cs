@@ -12,14 +12,20 @@ builder.Services.AddControllers();
 // builder.Services.AddDbContext<DataContext>(opt => 
 //     opt.UseSqlite(builder.Configuration.GetConnectionString("Db")));
 
+var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+optionsBuilder.UseSqlite("Data Source=DataContext.db"); 
+var dataContext = new DataContext(optionsBuilder.Options);
+dataContext.Database.EnsureCreated();  
+
 builder.Services.AddSingleton<DataContext>(provider =>
 {
-    var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-    optionsBuilder.UseSqlite("Data Source=DataContext.db"); 
-    var accountContext = new DataContext(optionsBuilder.Options);
-    accountContext.Database.EnsureCreated();  
+    return dataContext;
+});
+builder.Services.AddSingleton<IPostManager>(provider =>
+{
+    IPostManager postManager = new PostManager(dataContext);
 
-    return accountContext;
+    return postManager;
 });
 builder.Services.AddCors(c => c.AddPolicy("cors", opt =>
 {
